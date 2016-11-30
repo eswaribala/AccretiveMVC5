@@ -1,0 +1,95 @@
+Install-Package EntityFramework -version 6.1.3 
+Install-Package entityframework -version 5.0.0
+1.
+enable-migrations  -contexttypename CourseDBContext
+enable-migrations -Force -contexttypename CourseDBContext
+2.add-migration InitialCreate
+3.update-database
+
+
+alter table
+ add-migration Addemail
+update-database
+adding new table
+add-migration AddUser
+update-database
+
+
+http://www.entityframeworktutorial.net/code-first/foreignkey-dataannotations-attribute-in-code-first.aspx
+
+Install-Package MvcScaffolding
+Scaffold Controller Team 
+Scaffold Controller Task -Repository -Force
+2: Scaffold Controller Note -Repository -Force    
+3: Scaffold Controller Status -Repository -Force
+
+Automated Migration
+"enable-migrations –EnableAutomaticMigration:$true
+
+Install-Package PagedList.Mvc
+[Table("StudentInfo")]
+    public class Student
+    {
+        public Student(){ }
+        
+        [Key]
+        public int SID { get; set; }
+
+        [Required(ErrorMessage="Student Name is Required" )]
+        [Column("Name", TypeName="ntext")]        
+        [MaxLength(20), MinLength(2, ErrorMessage="Student name can not be 2 character or less")]
+        public string StudentName { get; set; }
+
+        [NotMapped]
+        public int? Age { get; set; }
+
+        [ConcurrencyCheck()]
+        [Timestamp]
+        public Byte[] LastModifiedTimestamp { get; set; }
+
+        public int? MathScore { get; set; }
+        
+        public int? ScienceScore { get; set; }
+
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public int? TotalScore
+        {
+            get;
+            set;
+
+        }
+        
+        public int StdId { get; set; }
+
+        [ForeignKey("StdId")]
+        public virtual Standard Standard { get; set; }
+    }
+        
+
+
+
+
+
+  [Table("StudentInfo")]
+    public class Student
+    {
+        public Student() { }
+        
+        [Key]
+        public int SID { get; set; }
+
+        [Column("Name", TypeName="ntext")]
+        [MaxLength(20)]
+        public string StudentName { get; set; }
+
+        [NotMapped]
+        public int? Age { get; set; }
+        
+        
+        public int StdId { get; set; }
+
+        [ForeignKey("StdId")]
+        public virtual Standard Standard { get; set; }
+    }
+        
